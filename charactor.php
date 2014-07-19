@@ -14,6 +14,14 @@ class Charactor {
         $this->date_d = $date_d;
     }
 
+    public function get_title()
+    {
+        return $this->title;
+    }
+    public function set_title($title)
+    {
+        $this->title = $title;
+    }
     public function get_name()
     {
         return $this->name;

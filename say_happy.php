@@ -15,7 +15,7 @@ class SayHappy {
 
     public function run()
     {
-        for ($i = 1; $i < 2; $i++) {
+        for ($i = 1; $i < 12; $i++) {
             $this->crawl_char($i);
         }
     }
@@ -27,7 +27,7 @@ class SayHappy {
         $regex = "#center>(.*)日.*crimson>(.*)</font>\((.*)\)</td>#uU";
         preg_match_all($regex, $f, $m, PREG_SET_ORDER);
         foreach ($m as $v) {
-            $this->charactors[] = new Charactor($m[1], $m[2], $i, $m[1]);
+            $this->charactors[] = new Charactor($v[2], $v[3], $i, $v[1]);
         }
     }
 }
