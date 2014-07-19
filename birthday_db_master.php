@@ -70,6 +70,12 @@ class BirthdayDBManager {
         }
         return $this->select_title_id($title_name);
     }
+
+    /*
+     * AIP methods
+     * ------------------------------ */
+    public function api_charactor($param) {
+    }
     
 }
 
