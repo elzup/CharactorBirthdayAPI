@@ -1,10 +1,12 @@
 <?php
-require_once './keys.php';
-require_once './dbconstants.php';
+
 require_once './birthday_db_master.php';
 $dsn = 'pgsql:dbname=' . DB_NAME .' host=' . DB_HOST . ' port=' . DB_PORT;
 $user = DB_USER;
 $password = DB_PASS;
+
+$get = $_GET;
+var_dump($get);
 
 $obj = new stdclass();
 try {

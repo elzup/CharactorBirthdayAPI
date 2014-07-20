@@ -78,13 +78,5 @@ class BirthdayDBManager {
         catch (PDOException $e) {
         }
     }
-
-    /*
-     * AIP methods
-     * ------------------------------ */
-    public function get_charactor_api($param) {
-        $sql = 'SELECT * FROM ' . DB_TN_CHARACTORS;
-    }
-    
 }
 
