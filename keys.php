@@ -1,7 +1,7 @@
 <?php
 
-define('DB_NAME', 'birthdayapi_db');
-define('DB_HOST', 'localhost');
-define('DB_PORT', '5432');
-define('DB_USER', 'dbpuser');
-define('DB_PASS', 'hogehoge');
+define('DB_NAME', '****');
+define('DB_HOST', '****');
+define('DB_PORT', '****');
+define('DB_USER', '****');
+define('DB_PASS', '****');
