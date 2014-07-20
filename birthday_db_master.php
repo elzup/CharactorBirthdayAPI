@@ -32,7 +32,7 @@ class BirthdayDBManager {
     }
 
     private function insert_charactor($c, $title_id) {
-        $stmt = $this->dbh->prepare('INSERT INTO charactor (charactor_name, birthday_m, birthday_d) VALUES (:NAME, :BM, :BD)');
+        $stmt = $this->dbh->prepare('INSERT INTO charactors (charactor_name, birthday_m, birthday_d) VALUES (:NAME, :BM, :BD)');
         $stmt->bindValue(':NAME', $c->get_name());
         $stmt->bindValue(':BM', $c->get_date_m());
         $stmt->bindValue(':BD', $c->get_date_d());
@@ -41,7 +41,7 @@ class BirthdayDBManager {
     }
 
     public function select_charactor_id($charactor_name) {
-        $stmt = $this->dbh->prepare('SELECT charactor_id from charactor where charactor_name = :NAME');
+        $stmt = $this->dbh->prepare('SELECT charactor_id from charactors where charactor_name = :NAME');
         $stmt->bindValue(':NAME', $charactor_name);
         $stmt->execute();
         if ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
@@ -51,7 +51,7 @@ class BirthdayDBManager {
     }
 
     private function select_title_id($title_name) {
-        $stmt = $this->dbh->prepare('SELECT title_id from title where title_name = :NAME');
+        $stmt = $this->dbh->prepare('SELECT title_id from titles where title_name = :NAME');
         $stmt->bindValue(':NAME', $title_name);
         $stmt->execute();
         if ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
@@ -62,7 +62,7 @@ class BirthdayDBManager {
 
     private function insert_title($title_name) {
         try {
-            $stmt = $this->dbh->prepare("INSERT INTO title (title_name) VALUES (:NAME);");
+            $stmt = $this->dbh->prepare("INSERT INTO titles (title_name) VALUES (:NAME);");
             $stmt->bindValue(':NAME', $title_name);
             $stmt->execute();
         } catch (PDOException $e) {
@@ -74,7 +74,7 @@ class BirthdayDBManager {
     /*
      * AIP methods
      * ------------------------------ */
-    public function api_charactor($param) {
+    public function get_charactor_api($param) {
     }
     
 }

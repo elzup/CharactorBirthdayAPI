@@ -6,12 +6,10 @@ api for any charactor's birthday
 
 #request
 ##GET
-* anime
-    アニメ一覧
+* title
+    作品一覧
 * charactor
     キャラクタ一覧
-* birthday
-
 
 #object
 charactor is\_detail
