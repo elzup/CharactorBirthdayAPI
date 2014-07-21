@@ -1,6 +1,7 @@
 <?php
 
 class Charactor {
+    private $id;
     private $name;
     private $title;
     private $date_m;
@@ -22,6 +23,7 @@ class Charactor {
     {
         $this->title = $title;
     }
+
     public function get_name()
     {
         return $this->name;
@@ -30,6 +32,7 @@ class Charactor {
     {
         $this->name = $name;
     }
+
     public function get_atitle()
     {
         return $this->title;
@@ -38,6 +41,7 @@ class Charactor {
     {
         $this->title = $title;
     }
+
     public function get_date_m()
     {
         return $this->date_m;
@@ -46,6 +50,7 @@ class Charactor {
     {
         $this->date_m = $date_m;
     }
+
     public function get_date_d()
     {
         return $this->date_d;

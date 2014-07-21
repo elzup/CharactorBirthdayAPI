@@ -22,6 +22,10 @@ class BirthdayAPIManager {
     }
 
     public function titles($param) {
+//| title\_id       | 任意  | 作品IDの指定 |
+//| include\_detil  | 任意  | 詳細あり(bool) default: false |
+//| user\_id        | 任意  | ユーザIDの指定 |
+        return $api ;
     }
 
     public function charactors() {
