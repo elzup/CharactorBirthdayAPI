@@ -2,6 +2,5 @@
 RewriteEngine on
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
-#RewriteRule ^titles$ birthday/index\.php [L]
-RewriteRule ^([0-9A-Za-z]+)/([0-9A-Za-z)]+)$ index.php?var1=$1&var2=$2 [L]
-RewriteRule ^([0-9A-Za-z]+)$ index.php?var1=$1&var2=$2 [L]
+RewriteRule ^([0-9A-Za-z]+)/([0-9A-Za-z)]+)$ index.php?m1=$1&m2=$2 [L,QSA]
+RewriteRule ^([0-9A-Za-z]+)$ index.php?m1=$1 [L,QSA]
