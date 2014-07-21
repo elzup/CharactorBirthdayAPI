@@ -21,7 +21,18 @@ class BirthdayAPIManager {
         $this->dbm = new BirthdayDBManager(new PDO($dsn, $user, $password));
     }
 
-    public function charactors_search() {
+    public function titles($param) {
     }
 
+    public function charactors() {
+    }
+
+    public function __call($m, $b)
+    {
+        echo 'nothing method called';
+        echo 'm';
+        var_dump($m);
+        echo 'b';
+        var_dump($b);
+    }
 }
