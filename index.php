@@ -1,6 +1,6 @@
 <?php
 
-require_once './birthday_db_manager.php';
+require_once './birthday_api_manager.php';
 $get = $_GET;
 var_dump($get);
 

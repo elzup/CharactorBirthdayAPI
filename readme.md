@@ -13,7 +13,7 @@ api for any charactor's birthday
 | パラメーター           || 詳細 |
 | :-----------    | :---: | :-------------------------------- |
 | title\_id       | 任意  | 作品IDの指定 |
-| include\_detil  | 任意  | 詳細あり(bool) default: false |
+| include\_detail  | 任意  | 詳細あり(bool) default: false |
 | user\_id        | 任意  | ユーザIDの指定 |
 
 * titles/search
@@ -30,7 +30,7 @@ api for any charactor's birthday
 | パラメーター           || 詳細 |
 | :-------------- | :---: | :-------------------------------- |
 | charactor\_id   | 任意  | キャラクターidの指定 |
-| include\_detil  | 任意  | 詳細あり(bool) default: false |
+| include\_detail  | 任意  | 詳細あり(bool) default: false |
 | user\_id        | 任意  | ユーザIDの指定 |
 
 * charactors/search
