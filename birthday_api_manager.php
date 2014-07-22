@@ -21,6 +21,9 @@ class BirthdayAPIManager {
         $this->dbm = new BirthdayDBManager(new PDO($dsn, $user, $password));
     }
 
+    /* 
+     * API calling methods
+     * ---------------------------- */
     public function titles($param) {
         $title_id = $param[PARAM_NAME_TITLE_ID];
         $is_detail = @$param[PARAM_NAME_INCLUDE_DETAILS] == 'true';
@@ -39,8 +42,12 @@ class BirthdayAPIManager {
         return $titles;
     }
 
-    public function charactors() {
+    public function charactors($param) {
     }
+
+    /*
+     * create obj methods
+     * -------------------------------- */
 
     private function create_charactors($rows, $is_detail = false) {
         $charactors = array();
@@ -89,10 +96,6 @@ class BirthdayAPIManager {
 
     public function __call($m, $b)
     {
-        echo 'nothing method called';
-        echo 'm';
-        var_dump($m);
-        echo 'b';
-        var_dump($b);
+        return create_error_obj('no find \'' . $m . '\' API');
     }
 }
