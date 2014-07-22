@@ -1,7 +1,7 @@
 <?php
 
 require_once './keys.php';
-require_once './dbconstants.php';
+require_once './constants.php';
 require_once('./birthday_db_manager.php');
 
 class BirthdayAPIManager {
@@ -25,7 +25,7 @@ class BirthdayAPIManager {
 //| title\_id       | 任意  | 作品IDの指定 |
 //| include\_detil  | 任意  | 詳細あり(bool) default: false |
 //| user\_id        | 任意  | ユーザIDの指定 |
-        return $api ;
+        return $api;
     }
 
     public function charactors() {

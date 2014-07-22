@@ -2,7 +2,7 @@
 
 require_once './say_happy.php';
 require_once './keys.php';
-require_once './dbconstants.php';
+require_once './constants.php';
 require_once './birthday_db_manager.php';
 
 $dsn = 'pgsql:dbname=' . DB_NAME .' host=' . DB_HOST . ' port=' . DB_PORT;
