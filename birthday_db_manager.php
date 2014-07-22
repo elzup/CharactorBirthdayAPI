@@ -78,5 +78,42 @@ class BirthdayDBManager {
         catch (PDOException $e) {
         }
     }
+
+    private function stmt_to_row($stmt) {
+        $rows = array();
+        while ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
+            $rows[] = $row;
+        }
+        return $row;
+    }
+
+    public function select_title($title_id = null) {
+        $sql = 'SELECT * FROM ' . DB_TN_TITLES;
+        if (!empty($title_id)) {
+            $sql .= ' WHERE title_id == :ID';
+        }
+        $stmt = $this->dbh->prepare($sql);
+        $stmt->bindValue(':ID', $title_id);
+        $stmt->execute();
+        return $this->stmt_to_row($stmt);
+    }
+
+    public function select_charactor($charactor_id = null, $title_id = null) {
+        $sql = 'SELECT * FROM ' . DB_TN_CHARACTORS;
+        if (!empty($charactor_id)) {
+            $sql .= ' WHERE charactor_id == :CID';
+        } else if (!empty($title_id)) {
+            $sql .= ' WHERE title_id == :TID';
+        }
+        $stmt = $this->dbh->prepare($sql);
+        if (!empty($charactor_id)) {
+            $stmt->bindValue(':CID', $charactor_id);
+        } else if (!empty($title_id)) {
+            $stmt->bindValue(':TID', $title_id);
+        }
+        $stmt->execute();
+        return $this->stmt_to_row($stmt);
+    }
 }
+
 

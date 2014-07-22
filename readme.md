@@ -13,8 +13,7 @@ api for any charactor's birthday
 | パラメーター           || 詳細 |
 | :-----------    | :---: | :-------------------------------- |
 | title\_id       | 任意  | 作品IDの指定 |
-| include\_detail  | 任意  | 詳細あり(bool) default: false |
-| user\_id        | 任意  | ユーザIDの指定 |
+| include\_detail | 任意  | 詳細あり(bool) default: false |
 
 * titles/search
 作品名検索でヒットした作品のリストをリクエスト
@@ -22,6 +21,12 @@ api for any charactor's birthday
 | パラメーター           || 詳細 |
 | :-------------- | :---: | :-------------------------------- |
 | q               | 必須  | 絞り込みキーワード |
+* titles/user
+ユーザのwatchした作品のリストをリクエスト
+
+| パラメーター           || 詳細 |
+| :-------------- | :---: | :-------------------------------- |
+| user\_id        | 任意  | ユーザIDの指定 |
 
 ###cahractor キャラ
 * charactors
@@ -30,8 +35,7 @@ api for any charactor's birthday
 | パラメーター           || 詳細 |
 | :-------------- | :---: | :-------------------------------- |
 | charactor\_id   | 任意  | キャラクターidの指定 |
-| include\_detail  | 任意  | 詳細あり(bool) default: false |
-| user\_id        | 任意  | ユーザIDの指定 |
+| include\_detail | 任意  | 詳細あり(bool) default: false |
 
 * charactors/search
 キャラクター名検索でヒットしたキャラクターのリストをリクエスト
@@ -39,6 +43,7 @@ api for any charactor's birthday
 パラメーター             || 詳細 |
 | :-------------- | :---: | :-------------------------------- |
 | q               | 必須  | 絞り込みキーワード |
+| include\_detail | 任意  | 詳細あり(bool) default: false |
 
 * charactors/date
 月や日付指定で該当するキャラクターのリストをリクエスト
@@ -53,6 +58,13 @@ api for any charactor's birthday
 当日が誕生日であるキャラクターのリストをリクエスト
 
 |パラメーター            || 詳細 |
+| :-------------- | :---: | :-------------------------------- |
+| user\_id        | 任意  | ユーザIDの指定 |
+
+* charactors/user
+ユーザのwatchした作品のキャラクターのリストをリクエスト
+
+| パラメーター           || 詳細 |
 | :-------------- | :---: | :-------------------------------- |
 | user\_id        | 任意  | ユーザIDの指定 |
 
@@ -104,6 +116,5 @@ title
 {
     "id": -1,
     "name": "作品名",
-    "charactor_count": 1
 }
 ```
