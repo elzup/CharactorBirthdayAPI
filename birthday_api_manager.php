@@ -11,7 +11,6 @@ class BirthdayAPIManager {
     private $dbm;
 
     public function __construct() {
-        echo 'asdlkfjalsdkfj';
         $this->installDBManager();
     }
 
@@ -28,12 +27,7 @@ class BirthdayAPIManager {
 
         $rows = $this->dbm->select_title($title_id);
         $titles = $this->create_titles($rows);
-        if ($is_detail) {
-
-        }
-    }
-
-    public function titles_search($param) {
+        return $titles;
     }
 
     public function charactors() {
@@ -42,38 +36,43 @@ class BirthdayAPIManager {
     private function create_charactors($rows, $is_detail = false) {
         $charactors = array();
         foreach($rows as $i => $row) {
-            $charactors[] = create_charactor($row, $is_detail);
+            $charactors[] = $this->create_charactor($row, $is_detail);
         }
         return $charactors;
     }
 
-    private function create_charactor($row, $is_detailtitle = false) {
+    private function create_charactor($row, $is_detail= false) {
         $obj = new stdclass();
-        $obj->id = $row['id'];
-        $obj->name = $row['name'];
-        $obj->day_m = $row['day_m'];
-        $obj->day_d = $row['day_d'];
-        if (empty($title)) {
+        $obj->id = $row['charactor_id'];
+        $obj->name = $row['charactor_name'];
+        $obj->day_m = $row['birthday_m'];
+        $obj->day_d = $row['birthday_d'];
+        if ($is_detail) {
             $obj->title = new stdclass();
             $obj->title->id = $row['tilte_id'];
             $obj->title->name = $row['tilte_name'];
         }
+        return $obj;
     }
 
     private function create_titles($rows, $is_detail = false) {
         $titles = array();
+        if (empty($rows)) {
+            return null;
+        }
         foreach($rows as $i => $row) {
-            $charactors = $this->create_charactors($this->dbm->select_charactor($row['title_id']));
-            $titles[] = create_charactor($row, $charactors);
+            $rowsc = $this->dbm->select_charactor(null, $row['title_id']);
+            $charactors = $this->create_charactors($rowsc);
+            $titles[] = $this->create_title($row, $charactors);
         }
         return $titles;
     }
 
-    private function create_title($row) {
+    private function create_title($row, $charactors) {
         $obj = new stdclass();
         $obj->id = $row['title_id'];
         $obj->name = $row['title_name'];
-        if (empty($charactors)) {
+        if (!empty($charactors)) {
             $obj->charactors = $charactors;
         }
         return $obj;
