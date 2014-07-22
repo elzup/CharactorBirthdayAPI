@@ -93,7 +93,21 @@ class BirthdayDBManager {
             $sql .= ' WHERE title_id = :ID';
         }
         $stmt = $this->dbh->prepare($sql);
-        $stmt->bindValue(':ID', $title_id);
+        if (!empty($title_id)) {
+            $stmt->bindValue(':ID', $title_id);
+        }
+        $stmt->execute();
+        return $this->stmt_to_row($stmt);
+    }
+
+    public function select_title_search($q) {
+        if (empty($q)) {
+            return null;
+        }
+        $sql = 'SELECT * FROM ' . DB_TN_TITLES;
+        $sql .= ' WHERE title_name LIKE :Q';
+        $stmt = $this->dbh->prepare($sql);
+        $stmt->bindValue(':Q', '%' . $q . '%');
         $stmt->execute();
         return $this->stmt_to_row($stmt);
     }

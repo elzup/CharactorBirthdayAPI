@@ -26,7 +26,16 @@ class BirthdayAPIManager {
         $is_detail = @$param[PARAM_NAME_INCLUDE_DETAILS] == 'true';
 
         $rows = $this->dbm->select_title($title_id);
-        $titles = $this->create_titles($rows);
+        $titles = $this->create_titles($rows, $is_detail);
+        return $titles;
+    }
+
+    public function titles_search($param) {
+        $q = $param[PARAM_NAME_Q];
+        $is_detail = @$param[PARAM_NAME_INCLUDE_DETAILS] == 'true';
+
+        $rows = $this->dbm->select_title_search($q);
+        $titles = $this->create_titles($rows, $is_detail);
         return $titles;
     }
 
