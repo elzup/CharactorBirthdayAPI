@@ -118,7 +118,7 @@ class BirthdayDBManager {
         if (!empty($charactor_id)) {
             $sql .= ' AND charactor_id = :CID';
         } else if (!empty($title_id)) {
-            $sql .= ' AND title_id = :TID';
+            $sql .= ' AND ' . DB_TN_CHARACTORS . '.title_id = :TID';
         }
         $stmt = $this->dbh->prepare($sql);
         if (!empty($charactor_id)) {

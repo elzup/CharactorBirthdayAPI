@@ -13,7 +13,7 @@ $url_main = 'titles/search';
 $url_tail = '?' . http_build_query($parameter);
 $url = $url_top . $url_main . $url_tail;
 
-$json = file_get_contents($url);
+echo $json = file_get_contents($url);
 $res = json_decode($json);
 $tilte = $res[0];
 

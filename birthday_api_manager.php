@@ -26,7 +26,7 @@ class BirthdayAPIManager {
      * ---------------------------- */
     public function titles($param) {
         $title_id = $param[PARAM_NAME_TITLE_ID];
-        $is_detail = !!@$param[PARAM_NAME_INCLUDE_DETAILS];
+        $is_detail = @$param[PARAM_NAME_INCLUDE_DETAILS];
 
         $rows = $this->dbm->select_title($title_id);
         $titles = $this->create_titles($rows, $is_detail);
@@ -35,7 +35,7 @@ class BirthdayAPIManager {
 
     public function titles_search($param) {
         $q = $param[PARAM_NAME_Q];
-        $is_detail = !!@$param[PARAM_NAME_INCLUDE_DETAILS];
+        $is_detail = @$param[PARAM_NAME_INCLUDE_DETAILS];
 
         $rows = $this->dbm->select_title_search($q);
         $titles = $this->create_titles($rows, $is_detail);
@@ -44,7 +44,7 @@ class BirthdayAPIManager {
 
     public function charactors($param) {
         $charactor_id = $param[PARAM_NAME_CHARACTOR_ID];
-        $is_detail = !!@$param[PARAM_NAME_INCLUDE_DETAILS];
+        $is_detail = @$param[PARAM_NAME_INCLUDE_DETAILS];
 
         $rows = $this->dbm->select_charactor($charactor_id);
         $charactors = $this->create_charactors($rows, $is_detail);
@@ -53,7 +53,7 @@ class BirthdayAPIManager {
 
     public function charactors_search($param) {
         $q = $param[PARAM_NAME_Q];
-        $is_detail = !!@$param[PARAM_NAME_INCLUDE_DETAILS];
+        $is_detail = @$param[PARAM_NAME_INCLUDE_DETAILS];
 
         $rows = $this->dbm->select_charactor_search($q);
         $charactors = $this->create_charactors($rows, $is_detail);
