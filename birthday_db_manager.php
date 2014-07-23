@@ -112,13 +112,25 @@ class BirthdayDBManager {
         return $this->stmt_to_row($stmt);
     }
 
+    public function select_charactor_search($q) {
+        if (empty($q)) {
+            return null;
+        }
+        $sql = 'SELECT * FROM ' . DB_TN_CHARACTORS;
+        $sql .= ' WHERE charactor_name LIKE :Q';
+        $stmt = $this->dbh->prepare($sql);
+        $stmt->bindValue(':Q', '%' . $q . '%');
+        $stmt->execute();
+        return $this->stmt_to_row($stmt);
+    }
+
     public function select_charactor($charactor_id = null, $title_id = null) {
         $sql = 'SELECT * FROM ' . DB_TN_CHARACTORS . ',' . DB_TN_TITLES;
         $sql .= ' WHERE ' . DB_TN_CHARACTORS . '.title_id = ' . DB_TN_TITLES . '.title_id';
         if (!empty($charactor_id)) {
             $sql .= ' AND charactor_id = :CID';
         } else if (!empty($title_id)) {
-            $sql .= ' AND title_id = :TID';
+            $sql .= ' AND ' . DB_TN_CHARACTORS . '.title_id = :TID';
         }
         $stmt = $this->dbh->prepare($sql);
         if (!empty($charactor_id)) {
@@ -126,6 +138,7 @@ class BirthdayDBManager {
         } else if (!empty($title_id)) {
             $stmt->bindValue(':TID', $title_id);
         }
+//        var_dump($stmt);
         $stmt->execute();
         return $this->stmt_to_row($stmt);
     }

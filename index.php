@@ -6,8 +6,7 @@ $get = $_GET;
 $obj = new stdclass();
 if (empty($get) || empty($get['m1'])) {
     $obj = create_error_obj('invalid request url');
-}
-else {
+} else {
     $bm = new BirthdayAPIManager();
     try {
         if (empty($get['m2'])) {
