@@ -112,6 +112,19 @@ class BirthdayDBManager {
         return $this->stmt_to_row($stmt);
     }
 
+    public function select_charactor_search($q) {
+        if (empty($q)) {
+            return null;
+        }
+        $sql = 'SELECT * FROM ' . DB_TN_CHARACTORS;
+        $sql .= ' WHERE ' . DB_TN_CHARACTORS . '.title_id = ' . DB_TN_TITLES . '.title_id';
+        $sql .= ' AND charactor_name LIKE :Q';
+        $stmt = $this->dbh->prepare($sql);
+        $stmt->bindValue(':Q', '%' . $q . '%');
+        $stmt->execute();
+        return $this->stmt_to_row($stmt);
+    }
+
     public function select_charactor($charactor_id = null, $title_id = null) {
         $sql = 'SELECT * FROM ' . DB_TN_CHARACTORS . ',' . DB_TN_TITLES;
         $sql .= ' WHERE ' . DB_TN_CHARACTORS . '.title_id = ' . DB_TN_TITLES . '.title_id';

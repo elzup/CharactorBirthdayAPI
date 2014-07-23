@@ -57,6 +57,7 @@ class BirthdayAPIManager {
 
         $rows = $this->dbm->select_charactor_search($q);
         $charactors = $this->create_charactors($rows, $is_detail);
+        var_dump($charactors);
         return $charactors;
     }
 
@@ -80,8 +81,8 @@ class BirthdayAPIManager {
         $obj->day_d = $row['birthday_d'];
         if ($is_detail) {
             $obj->title = new stdclass();
-            $obj->title->id = $row['tilte_id'];
-            $obj->title->name = $row['tilte_name'];
+            $obj->title->id = $row['title_id'];
+            $obj->title->name = $row['title_name'];
         }
         return $obj;
     }
