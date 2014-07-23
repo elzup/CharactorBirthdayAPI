@@ -27,6 +27,7 @@ class BirthdayAPIManager {
     public function titles($param) {
         $title_id = $param[PARAM_NAME_TITLE_ID];
         $is_detail = !!@$param[PARAM_NAME_INCLUDE_DETAILS];
+        $is_detail = true;
 
         $rows = $this->dbm->select_title($title_id);
         $titles = $this->create_titles($rows, $is_detail);
