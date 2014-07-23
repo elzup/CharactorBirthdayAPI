@@ -13,7 +13,6 @@ $url_main = 'titles/search';
 $url_tail = '?' . http_build_query($parameter);
 $url = $url_top . $url_main . $url_tail;
 
-echo PHP_EOL;
 echo '------ titles/search ------' . PHP_EOL;
 echo 'url : ' . $url . PHP_EOL;
 $json = file_get_contents($url);
@@ -27,12 +26,14 @@ if (isset($title->charactors)) {
         echo "{$c->name}({$c->day_m}月{$c->day_d}日)" . PHP_EOL;
     }
 }
+echo PHP_EOL;
 
 /*
  * charactors/search キャラ名検索
  */
+$q = '八';
 $parameter = array(
-    'q' => 'ひたぎ',
+    'q' => $q,
     'include_details' => true,
 );
 $url_main = 'charactors/search';
@@ -44,5 +45,10 @@ echo 'url : ' . $url . PHP_EOL;
 $json = file_get_contents($url);
 echo 'json: ' . $json . PHP_EOL;
 $res = json_decode($json);
-var_dump($res);
-
+echo '[' . $q . ']検索結果キャラクター一覧' . PHP_EOL;
+if (isset($res)) {
+    foreach($res as $c) {
+        echo "{$c->name}({$c->day_m}月{$c->day_d}日)\n\t<" . $c->title->name . '>' . PHP_EOL;
+    }
+}
+echo PHP_EOL;

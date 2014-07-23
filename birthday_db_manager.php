@@ -116,7 +116,7 @@ class BirthdayDBManager {
         if (empty($q)) {
             return null;
         }
-        $sql = 'SELECT * FROM ' . DB_TN_CHARACTORS;
+        $sql = 'SELECT * FROM ' . DB_TN_CHARACTORS . ',' . DB_TN_TITLES;
         $sql .= ' WHERE ' . DB_TN_CHARACTORS . '.title_id = ' . DB_TN_TITLES . '.title_id';
         $sql .= ' AND charactor_name LIKE :Q';
         $stmt = $this->dbh->prepare($sql);

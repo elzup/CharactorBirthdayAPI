@@ -57,7 +57,6 @@ class BirthdayAPIManager {
 
         $rows = $this->dbm->select_charactor_search($q);
         $charactors = $this->create_charactors($rows, $is_detail);
-        var_dump($charactors);
         return $charactors;
     }
 
