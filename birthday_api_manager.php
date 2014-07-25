@@ -60,6 +60,23 @@ class BirthdayAPIManager {
         return $charactors;
     }
 
+    public function charactors_date($param)
+    {
+        $m = $param[PARAM_NAME_DATE_M];
+        $d = @$param[PARAM_NAME_DATE_D];
+        $is_detail = @$param[PARAM_NAME_INCLUDE_DETAILS];
+
+        $rows = $this->dbm->select_charactor_date($m, $d);
+        $charactors = $this->create_charactors($rows, $is_detail);
+        return $charactors;
+    }
+
+    public function charactors_today($param)
+    {
+        $param[PARAM_NAME_DATE_M] = date('n');
+        $param[PARAM_NAME_DATE_D] = date('j');
+        return $this->charactors_date($param);
+    }
     /*
      * create obj methods
      * -------------------------------- */

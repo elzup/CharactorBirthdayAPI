@@ -142,6 +142,24 @@ class BirthdayDBManager {
         $stmt->execute();
         return $this->stmt_to_row($stmt);
     }
+
+    public function select_charactor_date($m, $d)
+    {
+        $sql = 'SELECT * FROM ' . DB_TN_CHARACTORS . ',' . DB_TN_TITLES;
+        $sql .= ' WHERE ' . DB_TN_CHARACTORS . '.title_id = ' . DB_TN_TITLES . '.title_id';
+        $sql .= ' AND birthday_m = :M';
+        if (!empty($d)) {
+            $sql .= ' AND birthday_d = :D';
+        }
+        $stmt = $this->dbh->prepare($sql);
+        $stmt->bindValue(':M', $m);
+        if (!empty($d)) {
+            $stmt->bindValue(':D', $d);
+        }
+        $stmt->execute();
+        return $this->stmt_to_row($stmt);
+        
+    }
 }
 
 

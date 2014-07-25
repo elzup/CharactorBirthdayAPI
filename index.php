@@ -19,6 +19,7 @@ else {
     } catch (PDOException $e) {
         // TODO: remove on production
         var_dump($e->getMessage());
+        $e = create_error_obj('sql error');
     }
 }
 
