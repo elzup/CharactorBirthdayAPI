@@ -64,12 +64,36 @@ class BirthdayAPIManager {
     {
         $m = $param[PARAM_NAME_DATE_M];
         $d = @$param[PARAM_NAME_DATE_D];
+        $user_id = @$param[PARAM_NAME_USER_ID];
+        $user_name = @$param[PARAM_NAME_USER_NAME];
         $is_detail = @$param[PARAM_NAME_INCLUDE_DETAILS];
 
-        $rows = $this->dbm->select_charactor_date($m, $d);
+        if (empty($user_id) && $user_name) {
+            $rows = $this->dbm->select_user($user_name);
+            $user_id = @$rows[0]['user_id'];
+        }
+
+        $rows = $this->dbm->select_charactor_date($m, $d, $user_id);
         $charactors = $this->create_charactors($rows, $is_detail);
         return $charactors;
     }
+
+    public function charactors_user($param)
+    {
+        $user_id = $param[PARAM_NAME_USER_ID];
+        $user_name = @$param[PARAM_NAME_USER_NAME];
+        $is_detail = @$param[PARAM_NAME_INCLUDE_DETAILS];
+
+        if (empty($user_id)) {
+            $rows = $this->dbm->select_user($user_name);
+            $user_id = @$rows[0]['user_id'];
+        }
+
+        $rows = $this->dbm->select_charactor_user($m, $d);
+        $charactors = $this->create_charactors($rows, $is_detail);
+        return $charactors;
+    }
+
 
     public function charactors_today($param)
     {

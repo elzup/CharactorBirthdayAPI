@@ -143,22 +143,37 @@ class BirthdayDBManager {
         return $this->stmt_to_row($stmt);
     }
 
-    public function select_charactor_date($m, $d)
+    public function select_charactor_date($m, $d, $user_id = null)
     {
         $sql = 'SELECT * FROM ' . DB_TN_CHARACTORS . ',' . DB_TN_TITLES;
-        $sql .= ' WHERE ' . DB_TN_CHARACTORS . '.title_id = ' . DB_TN_TITLES . '.title_id';
+        $sql .= ' WHERE (' . DB_TN_CHARACTORS . '.title_id = ' . DB_TN_TITLES . '.title_id';
         $sql .= ' AND birthday_m = :M';
         if (!empty($d)) {
             $sql .= ' AND birthday_d = :D';
+        }
+        $sql .= ')';
+        if (isset($user_id)) {
+            $sql .= ' AND (' . DB_TN_CHARACTORS . '.title_id) IN (SELECT title_id FROM ' . DB_TN_WATCHS . ' WHERE user_id = :UID)';
         }
         $stmt = $this->dbh->prepare($sql);
         $stmt->bindValue(':M', $m);
         if (!empty($d)) {
             $stmt->bindValue(':D', $d);
         }
+        if (isset($user_id)) {
+            $stmt->bindValue(':UID', $user_id);
+        }
         $stmt->execute();
         return $this->stmt_to_row($stmt);
-        
+    }
+
+    public function select_user($name)
+    {
+        $sql = 'SELECT * FROM ' . DB_TN_USERS . ' WHERE user_name = :NAME;';
+        $stmt = $this->dbh->prepare($sql);
+        $stmt->bindValue(':NAME', $name);
+        $stmt->execute();
+        return $this->stmt_to_row($stmt);
     }
 }
 
