@@ -1,5 +1,7 @@
 <?php
 
+define('ENVIRONMENT_DEVELOPMENT', 'dev');
+define('ENVIRONMENT_PRODUCTION', 'pro');
 
 define('DB_TN_TITLES', 'titles');
 define('DB_TN_CHARACTORS', 'charactors');

@@ -10,12 +10,16 @@ class BirthdayAPIManager {
      */
     private $dbm;
 
-    public function __construct() {
-        $this->installDBManager();
+    public function __construct($pdo = null) {
+        if (empty($pdo)) {
+            $this->installDBManager();
+        } else {
+            $this->dbm = $pdo;
+        }
     }
 
     private function installDBManager() {
-        $dsn = 'pgsql:dbname=' . DB_NAME .' host=' . DB_HOST . ' port=' . DB_PORT;
+        $dsn = DB_DSN;
         $user = DB_USER;
         $password = DB_PASS;
         $this->dbm = new BirthdayDBManager(new PDO($dsn, $user, $password));

@@ -1,6 +1,7 @@
 <?php
 
-$url_top = 'http://localhost/birthday/';
+//$url_top = 'http://localhost/birthday/';
+$url_top = 'http://api.elzup.com/';
 
 /*
  * titles/search 作品名検索
