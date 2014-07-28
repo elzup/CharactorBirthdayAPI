@@ -100,6 +100,15 @@ class BirthdayDBManager {
         return $this->stmt_to_row($stmt);
     }
 
+    public function select_title_user($user_id) {
+        $sql = 'SELECT * FROM ' . DB_TN_TITLES;
+        $sql .= ' WHERE (title_id) IN (SELECT title_id FROM ' . DB_TN_WATCHS . ' WHERE user_id = :ID)';
+        $stmt = $this->dbh->prepare($sql);
+        $stmt->bindValue(':ID', $user_id);
+        $stmt->execute();
+        return $this->stmt_to_row($stmt);
+    }
+
     public function select_title_search($q) {
         if (empty($q)) {
             return null;

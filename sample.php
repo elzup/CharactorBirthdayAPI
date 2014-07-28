@@ -7,8 +7,9 @@ $url_top = 'http://api.elzup.com/birthday/';
  * titles/search 作品名検索
  */
 $url_main = 'titles/search';
+$q = 'モンスター';
 $parameter = array(
-    'q' => 'ゆるゆり',
+    'q' => $q,
     'include_details' => true,
 );
 $url_tail = '?' . http_build_query($parameter);
@@ -19,15 +20,43 @@ echo 'url : ' . $url . PHP_EOL;
 $json = file_get_contents($url);
 echo 'json: ' . $json . PHP_EOL;
 $res = json_decode($json);
-$title = $res[0];
 
-echo '[' . $title->name . ']のキャラクター一覧' . PHP_EOL;
-if (isset($title->charactors)) {
-    foreach($res[0]->charactors as $c) {
-        echo "{$c->name}({$c->day_m}月{$c->day_d}日)" . PHP_EOL;
+echo '[' . $q . ']検索結果キャラクター一覧' . PHP_EOL;
+foreach($res as $title) {
+    if (isset($title->charactors)) {
+        echo ' [' . $title->name . ']のキャラクター一覧' . PHP_EOL;
+        foreach($title->charactors as $c) {
+            echo "{$c->name}({$c->day_m}月{$c->day_d}日)" . PHP_EOL;
+        }
     }
 }
 echo PHP_EOL;
+
+/*
+ * titles/user ユーザがwatchした作品リスト
+ */
+$url_main = 'titles/user';
+$user_name = 'elzup';
+$parameter = array(
+    'user_name' => $user_name,
+    'include_details' => true,
+);
+$url_tail = '?' . http_build_query($parameter);
+$url = $url_top . $url_main . $url_tail;
+
+echo '------ titles/user ------' . PHP_EOL;
+echo 'url : ' . $url . PHP_EOL;
+$json = file_get_contents($url);
+echo 'json: ' . $json . PHP_EOL;
+$res = json_decode($json);
+$title = $res[0];
+
+echo 'ユーザ[' . $user_name . ']キャラクター一覧' . PHP_EOL;
+foreach($res as $title) {
+    echo "{$title->name}({$title->count})\n";
+}
+echo PHP_EOL;
+
 
 /*
  * charactors/search キャラ名検索

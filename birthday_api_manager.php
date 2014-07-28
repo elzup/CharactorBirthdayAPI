@@ -47,9 +47,8 @@ class BirthdayAPIManager {
     }
 
     public function titles_user($param) {
-        $q = $param[PARAM_NAME_Q];
+        $user_id = $this->get_user($param);
         $is_detail = @$param[PARAM_NAME_INCLUDE_DETAILS];
-        $user_id = @$param[PARAM_NAME_USER_ID];
 
         $rows = $this->dbm->select_title_user($user_id);
         $titles = $this->create_titles($rows, $is_detail);
@@ -78,14 +77,8 @@ class BirthdayAPIManager {
     {
         $m = $param[PARAM_NAME_DATE_M];
         $d = @$param[PARAM_NAME_DATE_D];
-        $user_id = @$param[PARAM_NAME_USER_ID];
-        $user_name = @$param[PARAM_NAME_USER_NAME];
+        $user_id = $this->get_user($param);
         $is_detail = @$param[PARAM_NAME_INCLUDE_DETAILS];
-
-        if (empty($user_id) && $user_name) {
-            $rows = $this->dbm->select_user($user_name);
-            $user_id = @$rows[0]['user_id'];
-        }
 
         $rows = $this->dbm->select_charactor_date($m, $d, $user_id);
         $charactors = $this->create_charactors($rows, $is_detail);
@@ -94,14 +87,8 @@ class BirthdayAPIManager {
 
     public function charactors_user($param)
     {
-        $user_id = $param[PARAM_NAME_USER_ID];
-        $user_name = @$param[PARAM_NAME_USER_NAME];
+        $user_id = $this->get_user($param);
         $is_detail = @$param[PARAM_NAME_INCLUDE_DETAILS];
-
-        if (empty($user_id)) {
-            $rows = $this->dbm->select_user($user_name);
-            $user_id = @$rows[0]['user_id'];
-        }
 
         $rows = $this->dbm->select_charactor_user($m, $d);
         $charactors = $this->create_charactors($rows, $is_detail);
@@ -163,10 +150,22 @@ class BirthdayAPIManager {
         $obj = new stdclass();
         $obj->id = $row['title_id'];
         $obj->name = $row['title_name'];
+        $obj->count = null;
         if (!empty($charactors)) {
             $obj->charactors = $charactors;
+            $obj->count = count($charactors);
         }
         return $obj;
+    }
+
+    public function get_user($param) {
+        $user_id = @$param[PARAM_NAME_USER_ID];
+        $user_name = @$param[PARAM_NAME_USER_NAME];
+        if (empty($user_id) && $user_name) {
+            $rows = $this->dbm->select_user($user_name);
+            $user_id = @$rows[0]['user_id'];
+        }
+        return $user_id;
     }
 
     public function __call($m, $b)
