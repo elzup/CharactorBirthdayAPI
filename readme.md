@@ -21,12 +21,15 @@ api for any charactor's birthday
 | パラメーター           || 詳細 |
 | :-------------- | :---: | :-------------------------------- |
 | q               | 必須  | 絞り込みキーワード |
+| include\_detail | 任意  | 詳細あり(bool) default: false |
+
 * titles/user
 ユーザのwatchした作品のリストをリクエスト
 
 | パラメーター           || 詳細 |
 | :-------------- | :---: | :-------------------------------- |
 | user\_id        | 任意  | ユーザIDの指定 |
+| include\_detail | 任意  | 詳細あり(bool) default: false |
 
 ###cahractor キャラ
 * charactors
@@ -53,6 +56,7 @@ api for any charactor's birthday
 | date\_m         | 必須  | 月指定 |
 | date\_d         | 任意  | 日指定 |
 | user\_id        | 任意  | ユーザIDの指定 |
+| include\_detail | 任意  | 詳細あり(bool) default: false |
 
 * charactors/today
 当日が誕生日であるキャラクターのリストをリクエスト
@@ -60,6 +64,8 @@ api for any charactor's birthday
 |パラメーター            || 詳細 |
 | :-------------- | :---: | :-------------------------------- |
 | user\_id        | 任意  | ユーザIDの指定 |
+| include\_detail | 任意  | 詳細あり(bool) default: false |
+| plus            | 任意  | +n日 |
 
 * charactors/user
 ユーザのwatchした作品のキャラクターのリストをリクエスト
@@ -67,6 +73,7 @@ api for any charactor's birthday
 | パラメーター           || 詳細 |
 | :-------------- | :---: | :-------------------------------- |
 | user\_id        | 任意  | ユーザIDの指定 |
+| include\_detail | 任意  | 詳細あり(bool) default: false |
 
 
 #object

@@ -18,5 +18,6 @@ define('PARAM_NAME_USER_NAME', 'user_name');
 define('PARAM_NAME_INCLUDE_DETAILS', 'include_details');
 define('PARAM_NAME_Q', 'q');
 define('PARAM_NAME_DATE_M', 'date_m');
+define('PARAM_NAME_DATE_PLUS', 'plus');
 define('PARAM_NAME_DATE_D', 'date_d');
 

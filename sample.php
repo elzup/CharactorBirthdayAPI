@@ -1,7 +1,7 @@
 <?php
 
 //$url_top = 'http://localhost/birthday/';
-$url_top = 'http://api.elzup.com/';
+$url_top = 'http://api.elzup.com/birthday/';
 
 /*
  * titles/search 作品名検索
@@ -132,3 +132,26 @@ if (isset($res)) {
 }
 echo PHP_EOL;
 
+/*
+ * charactors/today (+1) 明日検索
+ */
+$parameter = array(
+    'include_details' => true,
+    'plus' => 1,
+);
+$url_main = 'charactors/today';
+$url_tail = '?' . http_build_query($parameter);
+$url = $url_top . $url_main . $url_tail;
+
+echo '------ charactors/today ------' . PHP_EOL;
+echo 'url : ' . $url . PHP_EOL;
+$json = file_get_contents($url);
+echo 'json: ' . $json . PHP_EOL;
+$res = json_decode($json);
+echo '明日が誕生日結果キャラクター一覧' . PHP_EOL;
+if (isset($res)) {
+    foreach($res as $c) {
+        echo sprintf('%s(%2d月%2d日)<%s>', $c->name, $c->day_m, $c->day_d, $c->title->name) . PHP_EOL;
+    }
+}
+echo PHP_EOL;

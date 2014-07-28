@@ -101,8 +101,10 @@ class BirthdayAPIManager {
 
     public function charactors_today($param)
     {
-        $param[PARAM_NAME_DATE_M] = date('n');
-        $param[PARAM_NAME_DATE_D] = date('j');
+        $plus = @$param[PARAM_NAME_DATE_PLUS] ?: 0;
+        $daytime = strtotime("+{$plus} day");
+        $param[PARAM_NAME_DATE_M] = date('n', $daytime);
+        $param[PARAM_NAME_DATE_D] = date('j', $daytime);
         return $this->charactors_date($param);
     }
     /*
