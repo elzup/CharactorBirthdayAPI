@@ -139,6 +139,7 @@ class BirthdayDBManager {
         } else if (!empty($title_id)) {
             $stmt->bindValue(':TID', $title_id);
         }
+//        var_dump($stmt);
         $stmt->execute();
         return $this->stmt_to_row($stmt);
     }

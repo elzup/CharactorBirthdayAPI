@@ -2,7 +2,7 @@
 
 require_once './keys.php';
 require_once './constants.php';
-require_once('./birthday_db_manager.php');
+require_once './birthday_db_manager.php';
 
 class BirthdayAPIManager {
     /**

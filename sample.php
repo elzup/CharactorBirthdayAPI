@@ -1,16 +1,16 @@
 <?php
 
-//$url_top = 'http://localhost/birthday/';
-$url_top = 'http://api.elzup.com/birthday/';
+$url_top = 'http://localhost/birthday/';
+//$url_top = 'http://api.elzup.com/birthday/';
 
 /*
  * titles/search 作品名検索
  */
+$url_main = 'titles/search';
 $parameter = array(
     'q' => 'ゆるゆり',
     'include_details' => true,
 );
-$url_main = 'titles/search';
 $url_tail = '?' . http_build_query($parameter);
 $url = $url_top . $url_main . $url_tail;
 
