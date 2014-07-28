@@ -6,7 +6,7 @@ $url_top = 'http://api.elzup.com/birthday/';
 /*
  * titles/search 作品名検索
  */
-$url_main = 'titles/search';
+$url_main = 'titles/search.json';
 $q = 'モンスター';
 $parameter = array(
     'q' => $q,
@@ -35,7 +35,7 @@ echo PHP_EOL;
 /*
  * titles/user ユーザがwatchした作品リスト
  */
-$url_main = 'titles/user';
+$url_main = 'titles/user.json';
 $user_name = 'elzup';
 $parameter = array(
     'user_name' => $user_name,
@@ -66,7 +66,7 @@ $parameter = array(
     'q' => $q,
     'include_details' => true,
 );
-$url_main = 'charactors/search';
+$url_main = 'charactors/search.json';
 $url_tail = '?' . http_build_query($parameter);
 $url = $url_top . $url_main . $url_tail;
 
@@ -93,7 +93,7 @@ $parameter = array(
     'date_d' => $d,
     'include_details' => true,
 );
-$url_main = 'charactors/date';
+$url_main = 'charactors/date.json';
 $url_tail = '?' . http_build_query($parameter);
 $url = $url_top . $url_main . $url_tail;
 
@@ -120,7 +120,7 @@ $parameter = array(
     'user_name' => $user_name,
     'include_details' => true,
 );
-$url_main = 'charactors/date';
+$url_main = 'charactors/date.json';
 $url_tail = '?' . http_build_query($parameter);
 $url = $url_top . $url_main . $url_tail;
 
@@ -144,7 +144,7 @@ echo PHP_EOL;
 $parameter = array(
     'include_details' => true,
 );
-$url_main = 'charactors/today';
+$url_main = 'charactors/today.json';
 $url_tail = '?' . http_build_query($parameter);
 $url = $url_top . $url_main . $url_tail;
 
@@ -168,7 +168,7 @@ $parameter = array(
     'include_details' => true,
     'plus' => 1,
 );
-$url_main = 'charactors/today';
+$url_main = 'charactors/today.json';
 $url_tail = '?' . http_build_query($parameter);
 $url = $url_top . $url_main . $url_tail;
 
