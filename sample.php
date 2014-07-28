@@ -1,7 +1,7 @@
 <?php
 
-$url_top = 'http://localhost/birthday/';
-//$url_top = 'http://api.elzup.com/birthday/';
+//$url_top = 'http://localhost/birthday/';
+$url_top = 'http://api.elzup.com/birthday/';
 
 /*
  * titles/search 作品名検索
@@ -57,8 +57,8 @@ echo PHP_EOL;
 /*
  * charactors/date 日付検索(日付指定)
  */
-$m = 7;
-$d = 26;
+$m = 1;
+$d = 5;
 $parameter = array(
     'date_m' => $m,
     'date_d' => $d,
@@ -84,7 +84,7 @@ echo PHP_EOL;
 /*
  * charactors/date 日付検索(月指定,ユーザwatched)
  */
-$m = 6;
+$m = 7;
 $user_name = 'elzup';
 $parameter = array(
     'date_m' => $m,

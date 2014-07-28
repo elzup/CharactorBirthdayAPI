@@ -46,6 +46,16 @@ class BirthdayAPIManager {
         return $titles;
     }
 
+    public function titles_user($param) {
+        $q = $param[PARAM_NAME_Q];
+        $is_detail = @$param[PARAM_NAME_INCLUDE_DETAILS];
+        $user_id = @$param[PARAM_NAME_USER_ID];
+
+        $rows = $this->dbm->select_title_user($user_id);
+        $titles = $this->create_titles($rows, $is_detail);
+        return $titles;
+    }
+
     public function charactors($param) {
         $charactor_id = $param[PARAM_NAME_CHARACTOR_ID];
         $is_detail = @$param[PARAM_NAME_INCLUDE_DETAILS];

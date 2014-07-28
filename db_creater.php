@@ -72,9 +72,10 @@ EOF;
     $bm = new BirthdayDBManager($dbh);
     $user_id = 1;
     foreach($list as $name) {
-        echo "[$name]\n";
+        echo "[$name]";
         $rows = $bm->select_title_search($name);
         if (!empty($rows)) {
+            echo '*';
             foreach($rows as $row) {
                 $title_id = $row['title_id'];
                 if ($title_id == 5302) {
