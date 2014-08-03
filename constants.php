@@ -2,11 +2,21 @@
 
 define('ENVIRONMENT_DEVELOPMENT', 'dev');
 define('ENVIRONMENT_PRODUCTION', 'pro');
+if (file_exists('./env_pro.php')) {
+    require_once('./env_pro.php');
+} else {
+    define('ENVIRONMENT', ENVIRONMENT_DEVELOPMENT);
+}
 
-define('DB_TN_TITLES', 'titles');
-define('DB_TN_CHARACTORS', 'charactors');
-define('DB_TN_USERS', 'users');
-define('DB_TN_WATCHS', 'watchs');
+if (ENVIRONMENT == ENVIRONMENT_DEVELOPMENT) {
+    define('DB_TN_PREFIX', '');
+} else {
+    define('DB_TN_PREFIX', 'ba_');
+}
+define('DB_TN_TITLES', DB_TN_PREFIX . 'titles');
+define('DB_TN_CHARACTORS', DB_TN_PREFIX . 'charactors');
+define('DB_TN_USERS', DB_TN_PREFIX . 'users');
+define('DB_TN_WATCHS', DB_TN_PREFIX . 'watchs');
 
 define('PARAM_NAME_METHOD1', 'm1');
 define('PARAM_NAME_METHOD2', 'm2');

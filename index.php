@@ -1,11 +1,7 @@
 <?php
 
 require_once('./constants.php');
-if (file_exists('./env_pro.php')) {
-    require_once('./env_pro.php');
-} else {
-    define('ENVIRONMENT', ENVIRONMENT_DEVELOPMENT);
-}
+require_once('./keys.php');
 
 require_once './birthday_api_manager.php';
 $get = $_GET;
