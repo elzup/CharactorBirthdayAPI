@@ -31,3 +31,5 @@ define('PARAM_NAME_DATE_M', 'date_m');
 define('PARAM_NAME_DATE_PLUS', 'plus');
 define('PARAM_NAME_DATE_D', 'date_d');
 
+require_once dirname(__FILE__).'/keys.php';
+

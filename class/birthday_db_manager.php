@@ -1,5 +1,6 @@
 <?php
 // vim: fenc=utf8:
+require_once dirname(__FILE__).'/../config/constants.php';
 class BirthdayDBManager {
     private $dbh;
 

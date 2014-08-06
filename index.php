@@ -1,9 +1,6 @@
 <?php
 
-require_once('./constants.php');
-require_once('./keys.php');
-
-require_once './birthday_api_manager.php';
+require_once '.class/birthday_api_manager.php';
 $get = $_GET;
 
 $obj = new stdclass();

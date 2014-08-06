@@ -1,15 +1,6 @@
 <?php
 
-require_once('./constants.php');
-if (file_exists('./env_pro.php')) {
-    require_once('./env_pro.php');
-} else {
-    define('ENVIRONMENT', ENVIRONMENT_DEVELOPMENT);
-}
-
-require_once './say_happy.php';
-require_once './keys.php';
-require_once './birthday_db_manager.php';
+require_once '../class/birthday_db_manager.php';
 
 $dsn = DB_DSN;
 $user = DB_USER;
