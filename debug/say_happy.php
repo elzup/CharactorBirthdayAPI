@@ -1,5 +1,5 @@
 <?php
-require_once('./charactor.php');
+require_once('../class/charactor.php');
 
 class SayHappy {
     private $url_format = 'http://www.fan-web.jp/day/sayhappy_sp.cgi';

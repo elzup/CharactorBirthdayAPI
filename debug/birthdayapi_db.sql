@@ -61,7 +61,7 @@ CREATE TABLE IF NOT EXISTS `ba_titles` (
 
 CREATE TABLE IF NOT EXISTS `ba_users` (
   `user_id` int(11) NOT NULL AUTO_INCREMENT,
-  `user_name` varchar(20) DEFAULT NULL,
+  `user_name` varchar(20) UNIQUE,
   PRIMARY KEY (`user_id`)
 ) ENGINE=MyISAM  DEFAULT CHARSET=utf8 AUTO_INCREMENT=2 ;
 
@@ -69,8 +69,8 @@ CREATE TABLE IF NOT EXISTS `ba_users` (
 -- テーブルのデータのダンプ `ba_users`
 --
 
-INSERT INTO `ba_users` (`user_id`, `user_name`) VALUES
-(1, 'elzup');
+-- INSERT INTO `ba_users` (`user_id`, `user_name`) VALUES
+-- (1, 'elzup');
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
@@ -92,40 +92,40 @@ CREATE TABLE IF NOT EXISTS `ba_watchs` (
 -- テーブルのデータのダンプ `ba_watchs`
 --
 
-INSERT INTO `ba_watchs` (`user_id`, `title_id`) VALUES
-(1, 3485),
-(1, 3519),
-(1, 3606),
-(1, 3625),
-(1, 3716),
-(1, 3728),
-(1, 3746),
-(1, 3765),
-(1, 3817),
-(1, 3909),
-(1, 4016),
-(1, 4078),
-(1, 4138),
-(1, 4214),
-(1, 4490),
-(1, 4720),
-(1, 4898),
-(1, 4919),
-(1, 5057),
-(1, 5094),
-(1, 5151),
-(1, 5179),
-(1, 5203),
-(1, 5204),
-(1, 5334),
-(1, 5360),
-(1, 5367),
-(1, 5379),
-(1, 5392),
-(1, 5450),
-(1, 5453),
-(1, 5468);
-
+-- INSERT INTO `ba_watchs` (`user_id`, `title_id`) VALUES
+-- (1, 3485),
+-- (1, 3519),
+-- (1, 3606),
+-- (1, 3625),
+-- (1, 3716),
+-- (1, 3728),
+-- (1, 3746),
+-- (1, 3765),
+-- (1, 3817),
+-- (1, 3909),
+-- (1, 4016),
+-- (1, 4078),
+-- (1, 4138),
+-- (1, 4214),
+-- (1, 4490),
+-- (1, 4720),
+-- (1, 4898),
+-- (1, 4919),
+-- (1, 5057),
+-- (1, 5094),
+-- (1, 5151),
+-- (1, 5179),
+-- (1, 5203),
+-- (1, 5204),
+-- (1, 5334),
+-- (1, 5360),
+-- (1, 5367),
+-- (1, 5379),
+-- (1, 5392),
+-- (1, 5450),
+-- (1, 5453),
+-- (1, 5468);
+-- 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

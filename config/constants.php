@@ -9,7 +9,7 @@ if (file_exists('./env_pro.php')) {
 }
 
 if (ENVIRONMENT == ENVIRONMENT_DEVELOPMENT) {
-    define('DB_TN_PREFIX', '');
+    define('DB_TN_PREFIX', 'ba_');
 } else {
     define('DB_TN_PREFIX', 'ba_');
 }

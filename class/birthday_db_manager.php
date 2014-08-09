@@ -10,7 +10,6 @@ class BirthdayDBManager {
 
     public function regist_charactors(array $charactors) {
         foreach ($charactors as $c) {
-//            var_dump($c);
             $this->regist_charactor($c);
         }
     }
@@ -43,7 +42,7 @@ class BirthdayDBManager {
     }
 
     public function select_charactor_id($charactor_name) {
-        $stmt = $this->dbh->prepare('SELECT charactor_id from ' . DB_TN_CHARACTORS . ' where charactor_name = :NAME');
+        $stmt = $this->dbh->prepare('SELECT charactor_id from ' . DB_TN_CHARACTORS . ' where charactor_name = :NAME;');
         $stmt->bindValue(':NAME', $charactor_name);
         $stmt->execute();
         if ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
@@ -53,9 +52,10 @@ class BirthdayDBManager {
     }
 
     private function select_title_id($title_name) {
-        $stmt = $this->dbh->prepare('SELECT title_id from ' . DB_TN_TITLES . ' where title_name = :NAME');
+        $stmt = $this->dbh->prepare('SELECT title_id from ' . DB_TN_TITLES . ' where title_name = :NAME;');
         $stmt->bindValue(':NAME', $title_name);
         $stmt->execute();
+//        echo 'SELECT title_id from ' . DB_TN_TITLES . ' where title_name = :NAME;' . $title_name;
         if ($row = $stmt->fetch(PDO::FETCH_ASSOC)){
             return $row['title_id'];
         }
@@ -67,6 +67,7 @@ class BirthdayDBManager {
         $stmt->bindValue(':NAME', $title_name);
         $stmt->execute();
         return $this->select_title_id($title_name);
+
     }
 
     public function regist_watch($user_id, $title_id) {
