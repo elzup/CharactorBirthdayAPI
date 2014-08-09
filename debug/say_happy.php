@@ -15,7 +15,7 @@ class SayHappy {
 
     public function run()
     {
-        for ($i = 1; $i <= 1; $i++) {
+        for ($i = 1; $i <= 12; $i++) {
             $this->crawl_char($i);
         }
     }

@@ -12,9 +12,9 @@ try {
     $dbh = new PDO($dsn, $user, $password);
     $dbh->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
     $dbh->query("SET NAMES utf8");
-//    update_say_happy($dbh);
+    update_say_happy($dbh);
     add_my_titles($dbh);
-//    add_my_watchs($dbh);
+    add_my_watchs($dbh);
 } catch (PDOException $e) {
     var_dump($e->getMessage());
 }
@@ -55,7 +55,6 @@ function add_my_watchs(PDO $dbh) {
 それでも町は
 物語シリーズ
 僕は友達が少ない
-ヨスガ
 ゆるゆり
 俺の妹が
 中二病でも

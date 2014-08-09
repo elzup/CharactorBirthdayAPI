@@ -2,8 +2,8 @@
 
 define('ENVIRONMENT_DEVELOPMENT', 'dev');
 define('ENVIRONMENT_PRODUCTION', 'pro');
-if (file_exists('./env_pro.php')) {
-    require_once('./env_pro.php');
+if (file_exists(dirname(__FILE__).'/env_pro.php')) {
+    define('ENVIRONMENT', ENVIRONMENT_PRODUCTION);
 } else {
     define('ENVIRONMENT', ENVIRONMENT_DEVELOPMENT);
 }

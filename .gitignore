@@ -1,3 +1,4 @@
 plan/list.txt
-config/keys.php
+*keys.php
 nbproject/
+*test.php

@@ -1,7 +1,12 @@
 <?php
 
-require_once '.class/birthday_api_manager.php';
+
+require_once dirname(__FILE__) . '/class/birthday_api_manager.php';
 $get = $_GET;
+mb_language("uni");
+mb_internal_encoding("utf-8");
+mb_http_input("auto");
+mb_http_output("utf-8");
 
 $obj = new stdclass();
 if (empty($get) || empty($get['m1'])) {

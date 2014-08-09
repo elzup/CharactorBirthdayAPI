@@ -1,13 +1,15 @@
 <?php
 
-$url_top = 'http://localhost/birthday/';
-//$url_top = 'http://api.elzup.com/birthday/';
+header("Content-type: text/html; charset=utf-8");
+
+//$url_top = 'http://localhost/birthday/';
+$url_top = 'http://api.elzup.com/birthday/';
 
 /*
  * titles/search 作品名検索
  */
 $url_main = 'titles/search.json';
-$q = 'モンスター';
+$q = 'さくら';
 $parameter = array(
     'q' => $q,
     'include_details' => true,
