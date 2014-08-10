@@ -28,12 +28,11 @@ foreach ($chara_list as $c) {
 
 require_once('../lib/twitteroauth.php');
 
-$connection = new TwitterOAuth(TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_KEY, TWITTER_OAUTH_TOKEN, TWITTER_OAUTH_TOKEN_SECRET);
+$connection = new TwitterOAuth(TWITTER_CONSUMER_KEY, TWITTER_CONSUMER_SECRET, TWITTER_OAUTH_TOKEN, TWITTER_OAUTH_TOKEN_SECRET);
 //var_dump($connection);
-$url = 'https://api.twitter.com/1.1/direct_messages/new.json';
-$param = [
+$url = 'direct_messages/new';
+$param = array(
     'user_id' => '1106631758',
     'text' => $text,
-];
-$res = $connection->get($url, $param);
-var_dump($res);
+);
+$connection->post($url, $param);
